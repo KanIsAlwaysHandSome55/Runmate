@@ -38,9 +38,38 @@ User:
 - total_calories
 
 Run Record:
+---
+
+## 5. API Design
+
+### Authentication
+1. POST /login  
+   - Description: User login with email and password  
+   - Request Body: { email, password }  
+   - Response: { user_id, token }
+
+---
+
+### Run Management
+2. GET /runs  
+   - Description: Get all run records for the logged-in user  
+
+3. POST /runs  
+   - Description: Save a new run record  
+   - Request Body: { distance, duration, calories, date }
+
+---
+
+### Profile
+4. GET /profile  
+   - Description: Get user profile information  
+
+5. PUT /profile  
+   - Description: Update user profile information  
 - run_id
 - user_id
 - distance
 - duration
 - calories
+
 - date
