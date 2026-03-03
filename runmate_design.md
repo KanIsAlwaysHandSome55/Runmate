@@ -118,3 +118,21 @@ Home Dashboard → Profile / Settings → Home Dashboard
   "goal_km_per_week": 10
 }
 ```
+---
+
+## 7. API Bridge (Connecting Client & Server)
+
+### 7.1 How Does the App Talk to the Backend?
+
+The mobile app communicates with the backend server using RESTful API endpoints over HTTP.  
+The client sends requests (GET, POST, PUT) and receives JSON responses.
+
+---
+
+### 7.2 Three Most Important API Actions
+
+| Action Name | HTTP Method | Endpoint URL | Data Sent | Data Returned |
+|------------|------------|--------------|-----------|--------------|
+| Login | POST | /api/v1/auth/login | { email, password } | { token, user_id } |
+| Create Run | POST | /api/v1/runs | { distance_km, duration_minutes, calories_burned, date } | { run_id, message } |
+| Get Runs | GET | /api/v1/runs | token (in header) | List of run records |
