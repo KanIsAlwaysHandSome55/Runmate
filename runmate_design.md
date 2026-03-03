@@ -106,19 +106,17 @@ Home Dashboard → Profile / Settings → Home Dashboard
 ```
 
 ### 6.2 User Data
-
 ```json
 {
-  "user_id": "user_123",
-  "name": "Kaung Khant Soe Moe",
-  "email": "kaung@example.com",
+  "user_id": "user_001",
+  "name": "Alex Chen",
+  "email": "alex@example.com",
   "avatar_url": "https://example.com/avatar.png",
-  "total_distance_km": 42.5,
-  "total_runs": 15,
-  "goal_km_per_week": 10
+  "total_distance_km": 12.4,
+  "total_runs": 6,
+  "goal_km_per_week": 5
 }
 ```
----
 
 ## 7. API Bridge (Connecting Client & Server)
 
@@ -136,3 +134,31 @@ The client sends requests (GET, POST, PUT) and receives JSON responses.
 | Login | POST | /api/v1/auth/login | { email, password } | { token, user_id } |
 | Create Run | POST | /api/v1/runs | { distance_km, duration_minutes, calories_burned, date } | { run_id, message } |
 | Get Runs | GET | /api/v1/runs | token (in header) | List of run records |
+
+## 8. State Management (The Brain)
+
+### 8.1 Global vs Local State
+Global State:
+
+1. Authentication Token
+   - Required for all API requests
+   - Determines if user is logged in
+
+2. Logged-in User Information
+   - user_id
+   - name
+   - email
+   - total statistics
+
+     Local State:
+
+- Login form input (email, password)
+- Running timer value
+- Temporary run data before saving
+
+### 8.2 Offline Strategy
+
+If the user loses internet connection:
+
+[x] The app shows cached data (old data) with an "Offline" warning.
+[x] The app allows read-only access but no writing.
